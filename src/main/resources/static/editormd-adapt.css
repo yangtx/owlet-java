@@ -1,0 +1,46 @@
+body .editormd-preview-container code, body .editormd-html-preview code{
+	padding: 1px 3px;
+}
+.night-mode .editormd-preview-theme-dark .markdown-body h1, .night-mode .editormd-preview-theme-dark .markdown-body h2, .night-mode .editormd-preview-theme-dark .markdown-body hr {
+    border-color: #404040;
+}
+.night-mode .editormd-preview-theme-dark .markdown-body{
+	color: #bbb;
+}
+.night-mode .editormd-dialog{
+	color: silver;
+	background-color: #2c2c2c;
+}
+.night-mode .editormd-form{
+	color: silver;
+}
+.night-mode .editormd-dialog-header{
+	border-color: #444;
+	background-color: #222;
+}
+.night-mode .editormd-dialog-header:hover{
+	background-color: #111;
+}
+/* .night-mode .editormd-mask{
+	background-color: black;
+	opacity: .6;
+} */
+
+.night-mode .editormd-preview-theme-dark .editormd-preview-container blockquote {
+    color: #888;
+    padding: 0.5em;
+    background: #222;
+    border-color: #333;
+}
+.night-mode .editormd-theme-dark .editormd-menu > li.divider{
+	border-color: #333;
+}
+.editormd .editormd-menu select { /*显示小三角*/
+    -webkit-appearance: menulist; 
+    -moz-appearance: menulist;
+    -ms-appearance: menulist;
+    appearance: menulist;
+}
+.night-mode .editormd-container-mask{
+	background-color: rgb(26,26,23);
+}
