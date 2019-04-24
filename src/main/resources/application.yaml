@@ -7,8 +7,8 @@ info:
   info2222: aaaabbbb
 
 app:
-  upload.path: ${upload.path}
-  asset.server: ${asset.server}
+  upload.path: /storage/owlet/assets
+  asset.server: /assets
 
 mybatis:
   typeAliasesPackage: com.xracoon.sys.owlet.orm.models,com.xracoon.sys.owlet.orm.modelsex

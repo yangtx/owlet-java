@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: owlet
+  labels:
+    app: owlet
+spec:
+  type: NodePort
+  ports:
+  - name: owlet
+    port: 8080
+    nodePort: 80
+  selector:
+    app: owlet
+---
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: owlet
+  labels:
+    app: owlet
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: owlet
+    spec:
+      containers:
+        - name: owlet
+          image: ${SERVICE_NAME}:${BUILD_VERSION}
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          env:
+          - name: XXX
+            value: xxx
+          ports:
+          - containerPort: 8080

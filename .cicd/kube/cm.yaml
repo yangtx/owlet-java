@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: owlet
+  labels:
+    app: owlet
+data:
+  upload.path: /storage/kube-owlet
