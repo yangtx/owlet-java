@@ -1,7 +1,7 @@
 set -e
 set -o pipefail
 
-gradle build
+./gradlew build
 
 mkdir -p docker-build/service
 cp build/libs/*.jar docker-build/service/service.jar
