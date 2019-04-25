@@ -1,6 +1,7 @@
 set -e
 set -o pipefail
 
+chmod +x gradlew
 ./gradlew build
 
 mkdir -p docker-build/service
