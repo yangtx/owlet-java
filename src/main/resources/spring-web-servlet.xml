@@ -24,9 +24,6 @@
         </property>
     </bean>
 
-	<mvc:resources mapping="/static/**" location="/static/"/>
-	<mvc:resources mapping="/upload/**" location="${upload.path}"/>
-
 	<!-- i18n -->
 	<mvc:interceptors>
 	    <!-- i18n基于请求参数改变locale的国际化拦截器 -->

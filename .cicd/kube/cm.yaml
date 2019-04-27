@@ -5,4 +5,7 @@ metadata:
   labels:
     app: owlet
 data:
-  upload.path: /storage/kube-owlet
+  UPLOAD_PATH: /storage/kube-owlet
+  DB_MASTER_HOST: cc
+  DB_MASTER_PORT: "30306"
+  DB_MASTER_PASSWORD: xxx

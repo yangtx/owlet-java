@@ -8,6 +8,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import com.xracoon.sys.owlet.component.GlobalConfig;
 import com.xracoon.sys.owlet.config.UploadType;
@@ -16,16 +17,21 @@ import com.xracoon.util.basekit.StringEx;
 @Component
 public class UploadService {
 	Logger logger= LoggerFactory.getLogger(UploadService.class);
-	@Autowired GlobalConfig globalConfig;
-	
+
+	@Value("${app.upload.path}")
+	public String uploadPath;
+	@Value("${app.asset.server}")
+	public String assetServer;
+
+
 	public String upload(FileItem item, String prefix, UploadType type) throws IOException{
-		if(StringEx.isBlank(globalConfig.uploadPath)){
+		if(StringEx.isBlank(uploadPath)){
 			logger.error("upload path not set");
 			return null;
 		}
-		if(globalConfig.assetServer!=null)
-			globalConfig.assetServer=globalConfig.assetServer.replaceAll("[/\\\\]+$", "");
-		if(StringEx.isBlank(globalConfig.assetServer)){
+		if(assetServer!=null)
+			assetServer=assetServer.replaceAll("[/\\\\]+$", "");
+		if(StringEx.isBlank(assetServer)){
 			logger.error("asset server not set");
 			return null;
 		}
@@ -38,7 +44,7 @@ public class UploadService {
 		if(prefix!=null)
 			outputFileName=prefix+outputFileName;
 		
-		File outputFile=new File( new File(globalConfig.uploadPath, type.getPath()), outputFileName );
+		File outputFile=new File( new File(uploadPath, type.getPath()), outputFileName );
 		if(!outputFile.getParentFile().exists())
 			outputFile.getParentFile().mkdirs();
 		
@@ -52,7 +58,7 @@ public class UploadService {
 			if(outputStream!=null)
 				outputStream.close();
 		}
-		String url=globalConfig.assetServer+"/"+type.getPath()+"/"+outputFileName;
+		String url=assetServer+"/"+type.getPath()+"/"+outputFileName;
 		return url;
 	}
 }

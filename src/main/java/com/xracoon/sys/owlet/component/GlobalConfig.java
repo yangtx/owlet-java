@@ -46,8 +46,4 @@ public class GlobalConfig {
 		}
 	}
 
-	@Value("${app.upload.path}")
-	public String uploadPath;
-	@Value("${app.asset.server}")
-	public String assetServer;
 }

@@ -9,11 +9,11 @@ spec:
   ports:
   - name: owlet
     port: 8080
-    nodePort: 80
+    nodePort: 30000
   selector:
     app: owlet
 ---
-apiVersion: v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: owlet
@@ -26,15 +26,39 @@ spec:
       labels:
         app: owlet
     spec:
+      imagePullSecrets:
+      - name: aliyun-cr
       containers:
-        - name: owlet
-          image: ${SERVICE_NAME}:${BUILD_VERSION}
-          resources:
-            requests:
-              cpu: 100m
-              memory: 256Mi
-          env:
-          - name: XXX
-            value: xxx
-          ports:
-          - containerPort: 8080
+      - name: owlet
+        image: $IMAGE_NAME
+        resources:
+          requests:
+            cpu: 500m
+            memory: 512Mi
+        envFrom:
+        - configMapRef:
+            name: owlet
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /storage/kube-owlet
+          name: data-volume
+      volumes:
+       - name: data-volume
+         hostPath:
+           path: /storage/owlet
+           type: DirectoryOrCreate
+#      - name: data-volume
+#        persistentVolumeClaim:
+#          claimName: owlet
+#---
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  name: owlet
+#spec:
+#  accessModes:
+#  - ReadWriteOnce
+#  resources:
+#    requests:
+#      storage: "10Gi"
