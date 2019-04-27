@@ -20,7 +20,8 @@ public class ApplicationWebMvcConfig extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("classpath:/static/")
                 .addResourceLocations("/assets/**")
-                .addResourceLocations("classpath:/assets/")
+                .addResourceLocations("classpath:/assets/");
+        registry.addResourceHandler("/assets/**")
                 .addResourceLocations(uploadPath);
     }
 }

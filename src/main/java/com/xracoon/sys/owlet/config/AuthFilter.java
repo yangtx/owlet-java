@@ -52,7 +52,7 @@ public class AuthFilter implements Filter {
 		String edtheme=edthemeCookie!=null?edthemeCookie.getValue():GlobalConfig.THEME_EDITOR_DAY_DEFAULT;
 		httpReq.setAttribute(GlobalConfig.ATTR_THEME_EDITOR_DAY, edtheme);
 		
-		if(!reqPath.startsWith("/static")){				
+		if(!reqPath.startsWith("/static") && !reqPath.startsWith("/assets")){
 			TokenUser user=null;
 			try{
 				if(!excludes.contains(reqPath)){
