@@ -4,7 +4,11 @@
 
 package com.xracoon.sys.owlet.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class IdWorker {
+    private static final Logger LOGGER = LoggerFactory.getLogger(IdWorker.class);
     private long workerId;
     private long dataCenterId;
     private long sequence;
@@ -17,7 +21,7 @@ public class IdWorker {
         if (dataCenterId > maxDataCenterId || dataCenterId < 0) {
             throw new IllegalArgumentException(String.format("datacenter Id can't be greater than %d or less than 0", maxDataCenterId));
         }
-        System.out.printf("worker starting. timestamp left shift %d, datacenter id bits %d, worker id bits %d, sequence bits %d, workerid %d",
+        LOGGER.info("worker starting. timestamp left shift {}, datacenter id bits {}, worker id bits {}, sequence bits {}, workerid {}",
                 timestampLeftShift, dataCenterIdBits, workerIdBits, sequenceBits, workerId);
 
         this.workerId = workerId;
@@ -56,7 +60,7 @@ public class IdWorker {
         long timestamp = timeGen();
 
         if (timestamp < lastTimestamp) {
-            System.err.printf("clock is moving backwards.  Rejecting requests until %d.", lastTimestamp);
+            LOGGER.error("clock is moving backwards.  Rejecting requests until {}.", lastTimestamp);
             throw new RuntimeException(String.format("Clock moved backwards.  Refusing to generate id for %d milliseconds",
                     lastTimestamp - timestamp));
         }

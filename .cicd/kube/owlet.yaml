@@ -31,6 +31,8 @@ spec:
       containers:
       - name: owlet
         image: $IMAGE_NAME
+        # command: []
+        # args: []
         resources:
           requests:
             cpu: 500m
