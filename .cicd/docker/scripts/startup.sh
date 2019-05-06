@@ -2,4 +2,4 @@
 
 current_path=$(dirname $(readlink -f $0))
 
-java $JAVA_OPTS -jar ${current_path}/service.war $@
+java -Djava.security.egd=file:/dev/urandom $JAVA_OPTS -jar ${current_path}/service.war $@
