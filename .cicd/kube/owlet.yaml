@@ -48,7 +48,7 @@ spec:
       volumes:
        - name: data-volume
          hostPath:
-           path: /storage/owlet
+           path: /storage/kube-owlet
            type: DirectoryOrCreate
 #      - name: data-volume
 #        persistentVolumeClaim:
