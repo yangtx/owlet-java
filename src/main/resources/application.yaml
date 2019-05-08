@@ -7,7 +7,7 @@ info:
   info2222: aaaabbbb
 
 app:
-  upload.path: /storage/owlet/assets
+  upload.path: file:///storage/owlet/assets/
   asset.server: /assets
 
 mybatis:

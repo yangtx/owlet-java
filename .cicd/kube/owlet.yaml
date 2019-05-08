@@ -43,7 +43,7 @@ spec:
         ports:
         - containerPort: 8080
         volumeMounts:
-        - mountPath: /storage/kube-owlet
+        - mountPath: /storage/owlet/assets
           name: data-volume
       volumes:
        - name: data-volume
