@@ -4,6 +4,8 @@
 
 package com.xracoon.sys.owlet;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
@@ -12,6 +14,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 
 @Configuration
 public class ApplicationWebMvcConfig extends WebMvcConfigurationSupport {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationWebMvcConfig.class);
+
     @Value("${app.upload.path}")
     private String uploadPath;  // 最后一个'/'之前的路径作为查找文件时的相对路径
     private static final String FOLDER_SEPARATOR = "/";
@@ -29,6 +33,8 @@ public class ApplicationWebMvcConfig extends WebMvcConfigurationSupport {
                 .addResourceLocations("classpath:/static/")
                 .addResourceLocations("/assets/**")
                 .addResourceLocations("classpath:/assets/");
+
+        LOGGER.info("upload path {}", normalizedPath);
         registry.addResourceHandler("/assets/**")
                 .addResourceLocations(normalizedPath);
     }
