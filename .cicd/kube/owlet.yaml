@@ -53,6 +53,29 @@ spec:
 #      - name: data-volume
 #        persistentVolumeClaim:
 #          claimName: owlet
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: owlet
+  # annotations:
+  #     nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: owlet
+          servicePort: 8080
+    host: owlet.xracoon.com
+#  - http:
+#      paths:
+#      - path: /owlet
+#        backend:
+#          serviceName: owlet
+#          servicePort: 8080
+#    host: www.xracoon.com
 #---
 #apiVersion: v1
 #kind: PersistentVolumeClaim
