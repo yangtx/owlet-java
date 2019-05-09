@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing
 @ImportResource("classpath:spring-web-servlet.xml")
 public class OwletApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(OwletApplication.class, args);
 	}

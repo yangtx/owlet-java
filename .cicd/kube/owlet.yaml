@@ -31,6 +31,8 @@ spec:
       containers:
       - name: owlet
         image: $IMAGE_NAME
+        # command: []
+        # args: []
         resources:
           requests:
             cpu: 500m
@@ -41,12 +43,12 @@ spec:
         ports:
         - containerPort: 8080
         volumeMounts:
-        - mountPath: /storage/kube-owlet
+        - mountPath: /storage/owlet/assets
           name: data-volume
       volumes:
        - name: data-volume
          hostPath:
-           path: /storage/owlet
+           path: /storage/kube-owlet
            type: DirectoryOrCreate
 #      - name: data-volume
 #        persistentVolumeClaim:
