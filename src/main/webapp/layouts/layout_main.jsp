@@ -11,15 +11,14 @@
 
 <html>
 <head>
-	<c:set var='static_host' value='https://www.xracoon.com/s'/>
     <title><decorator:title/></title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="${static_host}/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/static/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/static/site.css">
     <link href="<%=request.getContextPath()%>/static/pace-1.0.2/themes/red/pace-theme-flash.css" rel="stylesheet" />
-    <link rel="stylesheet" href="${static_host}/lobibox/latest/css/lobibox.css" />
-    <link rel="stylesheet" href="${static_host}/lobibox/latest/css/animate.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/static/lobibox/css/lobibox.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/static/lobibox/css/animate.css" />
     <script src="<%=request.getContextPath()%>/static/jquery/js/jquery-2.0.3.min.js"></script>
 	<script src="<%=request.getContextPath()%>/static/pace-1.0.2/pace.js"></script>
 	<style>
@@ -118,7 +117,7 @@
 </body>
 </html>
 
- <script src="${static_host}/lobibox/latest/js/lobibox.js"></script>
+ <script src="<%=request.getContextPath()%>/static/lobibox/js/lobibox.js"></script>
  <script>
     $(function(){    	
     	//具体页面head节点指定激活哪项 <meta name="navi" content="note"/>
